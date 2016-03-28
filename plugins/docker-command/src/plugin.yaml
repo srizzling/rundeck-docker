@@ -30,6 +30,7 @@ providers:
         title: DOCKER_CERT_PATH
         description: Path to the ceritficate file
         scope: Project
+        default: ~/.docker/cert.pem
       - type: String
         name: command
         title: command

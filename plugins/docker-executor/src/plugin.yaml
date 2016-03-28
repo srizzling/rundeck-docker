@@ -27,6 +27,7 @@ providers:
           name: docker_cert_path
           title: DOCKER_CERT_PATH
           description: Path to the ceritficate file
+          default: ~/.docker/cert.pem
     - name: docker-file-copier
       service: FileCopier
       title: Docker Container File Copier
@@ -50,4 +51,5 @@ providers:
           name: docker_cert_path
           title: DOCKER_CERT_PATH
           description: Path to the ceritficate file
+          default: ~/.docker/cert.pem
 
