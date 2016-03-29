@@ -16,5 +16,5 @@ image="$1"
 shift
 
 set -- $@
-docker-compose -f /root/docker-nodes/docker-compose.yml run --rm --name="${RD_JOB_PROJECT}-${RD_JOB_NAME}-${RD_JOB_ID}" "${image}" $@
+docker-compose -f /var/lib/rundeck/docker-nodes/docker-compose.yml run --rm --name="${RD_JOB_PROJECT}-${RD_JOB_NAME}-${RD_JOB_ID}" "${image}" $@
 

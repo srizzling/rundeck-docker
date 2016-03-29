@@ -15,12 +15,12 @@ docker images | cut -f1 -d" " | grep -v "REPOSITORY" | grep -v "centos" | while 
 do
         Created=$(docker inspect -f '{{.Created}}' $image)
         imageId=$(docker inspect -f '{{.Id}}' $image)
-        hostname=$image
         username=$(docker inspect -f '{{.Config.User}}' $image)
         exposed_ports=$(docker inspect -f '{{.Config.ExposedPorts}}' $image)
-        image=$image
         WorkingDir=$(docker inspect -f '{{.Config.WorkingDir}}' $image)
+        image=`echo $image | cut -f2 -d"_"`
         name=$image
+        hostname=$image
 cat <<EOF
 <node  name='$image' description='$name' imageId='$imageId' username='$username' tags='image,$image' hostname='$hostname' >
 <attribute name="ExposedPorts" value='$exposed_ports'/>
