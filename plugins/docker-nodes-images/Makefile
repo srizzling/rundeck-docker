@@ -4,9 +4,9 @@ clean:
 	rm -rf dist
 	mkdir dist
 zip: 
-	mkdir -p dist/docker-nodes
-	cp -r src/* dist/docker-nodes
-	(cd dist; zip -r ../dist/docker-nodes.zip docker-nodes)
+	mkdir -p dist/docker-nodes-images
+	cp -r src/* dist/docker-nodes-images
+	(cd dist; zip -r ../dist/docker-nodes-images.zip docker-nodes-images)
 
 check-env:
 ifndef RDECK_BASE
@@ -14,5 +14,5 @@ ifndef RDECK_BASE
 endif
 
 install: zip check-env
-	cp dist/docker-nodes.zip $(RDECK_BASE)/libext
+	cp dist/docker-nodes-images.zip $(RDECK_BASE)/libext
 

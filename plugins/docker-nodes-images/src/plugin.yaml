@@ -9,7 +9,7 @@ providers:
       plugin-type: script
       script-interpreter: /bin/bash
       script-file: nodes.sh
-      title: Docker Node Source
+      title: Docker Image Sources
       description: Get node data from docker
       resource-format: resourcexml
       config:
