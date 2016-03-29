@@ -11,26 +11,26 @@ fi
 export DOCKER_CERT_PATH=$RD_CONFIG_DOCKER_CERT_PATH
 
 echo "<project>"
-docker ps|grep -v 'CONTAINER'|cut -f1 -d" "| while read container
+docker images | cut -f1 -d" " | grep -v "REPOSITORY" while read images
 do
-        Created=$(docker inspect -f '{{.Created}}' $container)
-        containerId=$(docker inspect -f '{{.Id}}' $container)
+        Created=$(docker inspect -f '{{.Created}}' $image)
+        imageId=$(docker inspect -f '{{.Id}}' $image)
 
-        hostname=$(docker inspect -f '{{.Config.Hostname}}' $container)
-        username=$(docker inspect -f '{{.Config.User}}' $container)
-        exposed_ports=$(docker inspect -f '{{.Config.ExposedPorts}}' $container)
-        image=$(docker inspect -f '{{.Config.Image}}' $container)
-        WorkingDir=$(docker inspect -f '{{.Config.WorkingDir}}' $container)
-        name=$(docker inspect -f '{{.Name}}' $container)
+        hostname=$(docker inspect -f '{{.Config.Hostname}}' $image)
+        username=$(docker inspect -f '{{.Config.User}}' $image)
+        exposed_ports=$(docker inspect -f '{{.Config.ExposedPorts}}' $image)
+        image=$(docker inspect -f '{{.Config.Image}}' $image)
+        WorkingDir=$(docker inspect -f '{{.Config.WorkingDir}}' $image)
+        name=$(docker inspect -f '{{.Name}}' $image)
 
-        Running=$(docker inspect -f '{{.State.Running}}' $container)
-        Paused=$(docker inspect -f '{{.State.Paused}}' $container)
+        Running=$(docker inspect -f '{{.State.Running}}' $image)
+        Paused=$(docker inspect -f '{{.State.Paused}}' $image)
 
-        IPAddress=$(docker inspect -f '{{.NetworkSettings.IPAddress}}' $container)
+        IPAddress=$(docker inspect -f '{{.NetworkSettings.IPAddress}}' $image)
 
 
 cat <<EOF
-<node  name='$container' description='$name' containerId='$containerId' username='$username' tags='container,$image' hostname='$hostname' >
+<node  name='$image' description='$name' imageId='$imageId' username='$username' tags='image,$image' hostname='$hostname' >
 <attribute name="ExposedPorts" value='$exposed_ports'/>
 <attribute name="WorkingDir" value='$WorkingDir'/>
 <attribute name="Running" value='$Running'/>

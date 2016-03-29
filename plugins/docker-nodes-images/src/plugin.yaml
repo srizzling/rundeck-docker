@@ -1,10 +1,10 @@
-name: Docker Nodes
+name: Docker Images
 version: 1.1
 rundeckPluginVersion: 1.0
 author: alexh
 date: 06/29/15
 providers:
-    - name: docker-nodes
+    - name: docker-images
       service: ResourceModelSource
       plugin-type: script
       script-interpreter: /bin/bash
@@ -27,4 +27,5 @@ providers:
           name: docker_cert_path
           title: DOCKER_CERT_PATH
           description: Path to the ceritficate file
+          default: ~/.docker
 
