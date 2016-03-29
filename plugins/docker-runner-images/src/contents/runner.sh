@@ -16,4 +16,4 @@ image="$1"
 shift
 
 set -- $@
-docker run --name=test "${image}" $@
+docker run --name="${RD_JOB_PROJECT}/${RD_JOB_NAME}/${}/${RD_JOB_ID}" "${image}" $@
