@@ -9,7 +9,7 @@ providers:
       plugin-type: script
       script-interpreter: /bin/bash
       script-file: runner.sh
-      script-args: ${node.image} ${exec.command}
+      script-args: ${node.hostname} ${exec.command}
       title: Docker Node Runner
       description: Run  a command on a docker container (docker run)
       config:

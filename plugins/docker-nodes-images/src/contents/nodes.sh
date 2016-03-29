@@ -15,7 +15,7 @@ docker images | cut -f1 -d" " | grep -v "REPOSITORY" | grep -v "centos" | while 
 do
         Created=$(docker inspect -f '{{.Created}}' $image)
         imageId=$(docker inspect -f '{{.Id}}' $image)
-        hostname=$(docker inspect -f '{{.Config.Hostname}}' $image)
+        hostname=$image
         username=$(docker inspect -f '{{.Config.User}}' $image)
         exposed_ports=$(docker inspect -f '{{.Config.ExposedPorts}}' $image)
         image=$image
