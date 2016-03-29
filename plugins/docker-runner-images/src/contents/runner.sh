@@ -16,4 +16,4 @@ image="$1"
 shift
 
 set -- $@
-docker run "${image}" $@ -name=${RD_CONFIG_NAME}
+docker run --name=test "${image}" $@
